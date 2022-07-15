@@ -1,18 +1,28 @@
 import styled from "styled-components";
 import { TitleSec } from "../speciallitys";
 import Proj1 from "./../../images/projects/project1.png";
+import {ThemeContext} from "../../context/theme";
+import { useContext } from 'react'
 const Container = styled.div`
   display: flex;
+  background-color: #f2f2f2;
   flex-direction: column;
   justify-content: center;
-  background-color: #2e2e2e;
-  color: white;
   padding: 20px;
+  height: 100vh;
+  padding-right: 20px;
+  width: calc(100%-220px);
+  margin-left: 200px;
+  @media screen and (max-width: 900px) {
+    margin-left: 120px;
+  }
+  @media screen and (max-width: 600px) {
+    margin-left: 70px;
+  }
 `;
 const ContCar = styled.div`
   margin-top: 20px;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap:10px;
 `;
@@ -60,12 +70,13 @@ const Description = styled.p`
   text-align: center;
 `;
 const index = (): JSX.Element => {
+  const {theme, handleTheme} = useContext(ThemeContext);
   return (
-    <Container>
+    <Container className={theme}>
       <TitleSec>Proyectos</TitleSec>
       <ContCar>
         <Cart>
-          <Img src={Proj1} />
+          <Img className={theme === 'dark' ? 'aux' : ''} src={Proj1} />
           <MainCart>
             <Title>Carrito de compras</Title>
             <Description>
@@ -81,7 +92,7 @@ const index = (): JSX.Element => {
         </Cart>
 
         <Cart>
-          <Img src={Proj1} />
+          <Img className={theme === 'dark' ? 'aux' : ''} src={Proj1} />
           <MainCart>
             <Title>Carrito de compras</Title>
             <Description>

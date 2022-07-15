@@ -1,20 +1,22 @@
-import { useState } from "react";
-import Header from "./components/header/index";
+
+import { HashRouter, Routes, Route } from "react-router-dom";
+
 import Me from "./components/me/index";
-import styled from "styled-components";
 import Speciallity from "./components/speciallitys/index";
 import Project from "./components/projects";
-const Container = styled.div`
-  width: 100%;
-`;
+import Nav from './components/header/nav'
+
+
 function App(): JSX.Element {
   return (
-    <Container>
-      <Header />
-      <Me />
-      <Speciallity />
-      <Project />
-    </Container>
+    <HashRouter>
+      <Nav />
+    <Routes>
+      <Route path="/" element={<Me />} />
+      <Route path="/Habilidades" element={<Speciallity />} />
+      <Route path="/Proyectos" element={<Project />} />
+    </Routes>
+  </HashRouter>
   );
 }
 

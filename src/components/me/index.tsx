@@ -1,52 +1,60 @@
 import React from "react";
 import styled from "styled-components";
 import Me from "../../images/me.jpeg";
-
+import { useContext } from "react";
+import { ThemeContext } from "../../context/theme";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 const Container = styled.div`
-  width: 100%;
+  margin-left: 200px;
+  padding-right: 20px;
+  background-color: #f2f2f2;
+  width: calc(100%-220px);
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 10px;
-  margin-top: 25px;
-  padding: 1%;
-  @media screen and (max-width: 880px) {
+  height: 100vh;
+  margin-left: 220px;
+  @media screen and (max-width: 1075px) {
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 0% 10%;
+  }
+  @media screen and (max-width: 900px) {
+    margin-left: 120px;
+  }
+  @media screen and (max-width: 600px) {
+    margin-left: 70px;
   }
 `;
 
 const ContImg = styled.div``;
 
 const ContText = styled.div`
-  width: 600px;
-  @media screen and (max-width: 745px) {
-    width: 90%;
+  width: 500px;
+  @media screen and (max-width: 787px) {
+    width: 100%;
   }
 `;
 const Title = styled.h2`
-  text-align: center;
   font-size: 42px;
 `;
 const Description = styled.p`
   margin-top: 20px;
-  text-align: center;
   font-size: 18px;
 `;
 const Img = styled.img`
-  height: 450px;
+  height: 300px;
   border-radius: 10px;
-  @media screen and (max-width: 890px) {
-    height: 300px;
-  }
 `;
 
 const index = (): JSX.Element => {
+  const { theme, handleTheme } = useContext(ThemeContext);
   return (
-    <Container>
+    <Container className={theme}>
       <ContImg>
-        <Img src={Me} />
+        <Img src={Me} className={theme === "dark" ? "aux" : ""} />
       </ContImg>
       <ContText>
         <Title>Jose Zambrana</Title>
@@ -58,6 +66,35 @@ const index = (): JSX.Element => {
           forma práctica y eficaz. Actualmente React, Laravel, MySQL y SCRUM son
           las tecnologías con las cuales trabajo en el día a día.
         </Description>
+
+        <FaLinkedinIn
+          style={{
+            padding: "5px",
+            fontSize: "42px",
+            background: "#495057",
+            borderRadius: "50%",
+            color: "white",
+          }}
+        />
+
+        <FaWhatsapp
+          style={{
+            padding: "5px",
+            fontSize: "42px",
+            background: "#495057",
+            borderRadius: "50%",
+            color: "white",
+          }}
+        />
+        <FaGithub
+          style={{
+            padding: "5px",
+            fontSize: "42px",
+            background: "#495057",
+            borderRadius: "50%",
+            color: "white",
+          }}
+        />
       </ContText>
     </Container>
   );

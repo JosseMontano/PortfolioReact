@@ -1,0 +1,8 @@
+
+.dark{
+    background-color: #fff;
+    filter: invert(1) hue-rotate(180deg);
+  }
+  .aux{
+    filter: invert(1) hue-rotate(180deg);
+  }
