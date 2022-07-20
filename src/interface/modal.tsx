@@ -1,6 +1,6 @@
 export interface params {
-    isOpen: boolean;
-    closeModal: () => void;
-    children: JSX.Element;
+    isShown: boolean;
+    hide: () => void;
+    modalContent: JSX.Element;
   }
   

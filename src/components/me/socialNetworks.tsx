@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-import Modal from "../../hooks/modal/modal";
+import {Modal} from "../../hooks/modal/modal";
 import { UseModal } from "../../hooks/modal/useModal";
-import {params} from '../../interface/modal'
+import { params } from "../../interface/modal";
 const Redirect = styled.a``;
 
 const Button = styled.button`
@@ -23,8 +23,20 @@ const Button = styled.button`
   margin-top: 30px;
 `;
 
+const ContentModal = (
+  <>
+    <h2>Felicitaciones</h2>
+    <p>
+      El pedido será enviado a nuestro whatsapp. El pago se realiza en efectivo
+      al momento de la entrega.
+    </p>
+    <input />
+    <Button>Enviar</Button>
+  </>
+);
+
 function SocialNetworks() {
-  const [isOpenModal1, openModal1, closeModal1] = UseModal();
+  const {isShown, toggle} = UseModal();
   const styleIcon = {
     padding: "5px",
     fontSize: "42px",
@@ -33,33 +45,32 @@ function SocialNetworks() {
     color: "white",
   };
   //https://api.whatsapp.com/send?phone=59165722183
-  const handleModalWhtsapp = () => {
-    openModal1();
-  };
+
+  let data = [
+    {
+      href: "https://www.linkedin.com/in/jos%C3%A9-zambrana-bb08501b6/",
+      component: FaLinkedinIn,
+    },
+    {
+      href: "https://github.com/JosseMontano",
+      component: FaGithub,
+    },
+  ];
   return (
     <>
-      <Modal isOpen={isOpenModal1} closeModal={closeModal1}>
-        <>
-          <h2>Felicitaciones</h2>
-          <p>
-            El pedido será enviado a nuestro whatsapp. El pago se realiza en
-            efectivo al momento de la entrega.
-          </p>
-          <button>ver pedido</button>
-          <Button>Enviar</Button>
-        </>
-      </Modal>
-      <Redirect
-        target="_blank"
-        href="https://www.linkedin.com/in/jos%C3%A9-zambrana-bb08501b6/"
-      >
-        <FaLinkedinIn style={styleIcon} />
-      </Redirect>
-      <Redirect onClick={() => handleModalWhtsapp()}>
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={ContentModal}
+      />
+
+      {data.map((v, i) => (
+        <Redirect key={i} target="_blank" href={v.href}>
+          <v.component style={styleIcon} />
+        </Redirect>
+      ))}
+      <Redirect onClick={toggle}>
         <FaWhatsapp style={styleIcon} />
-      </Redirect>
-      <Redirect target="_blank" href="https://github.com/JosseMontano">
-        <FaGithub style={styleIcon} />
       </Redirect>
     </>
   );

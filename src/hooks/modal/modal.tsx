@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import {params} from '../../interface/modal'
+import ReactDOM from 'react-dom';
+
 const Container = styled.div<{ open: boolean }>`
   position: fixed;
   z-index: 99999;
@@ -30,19 +32,19 @@ const Close = styled.p`
   right: 1rem;
 `;
 
+export const Modal = ({isShown, hide, modalContent}:params) => {
 
-const ModalOrderSuccess = ( params: params) => {
   const handleModalContainerClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => e.stopPropagation();
-  return (
-    <Container open={params.isOpen} onClick={params.closeModal}>
+
+  const modal = (
+    <Container open={isShown} onClick={hide}>
       <ContainerSoon onClick={(e) => handleModalContainerClick(e)}>
-        <Close onClick={params.closeModal}>X</Close>
-        {params.children}
+        <Close onClick={hide}>X</Close>
+        {modalContent}
       </ContainerSoon>
     </Container>
   );
+  return isShown ? ReactDOM.createPortal(modal, document.body) : null;
 };
-
-export default ModalOrderSuccess;
