@@ -4,7 +4,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Me from "./components/me/index";
 import Speciallity from "./components/speciallitys/index";
 import Project from "./components/projects";
-import Nav from './components/header/nav'
+import Nav from './components/nav/'
 
 
 function App(): JSX.Element {

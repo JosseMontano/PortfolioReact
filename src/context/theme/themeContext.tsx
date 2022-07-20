@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import {ThemeContextState, MyContextProp} from "./types"
+import {ThemeContextState, MyContextProp} from "../../interface/theme"
 
 const contextDefaulValue: ThemeContextState = {
     theme:"light",

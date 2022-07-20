@@ -1,4 +1,11 @@
-
+@font-face{
+  font-family:”fontUniversal”; 
+  src:url(fonts/Rajdhani-SemiBold.ttf);
+  }
+  
+*{
+  font-family: ”fontUniversal”;
+}
 .dark{
     background-color: #fff;
     filter: invert(1) hue-rotate(180deg);
