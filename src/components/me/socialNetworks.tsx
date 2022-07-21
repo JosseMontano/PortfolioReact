@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import {Modal} from "../../hooks/modal/modal";
 import { UseModal } from "../../hooks/modal/useModal";
 import { params } from "../../interface/modal";
+import {ContentModal} from './contentModal'
 const Redirect = styled.a``;
 
 const Button = styled.button`
@@ -23,17 +24,9 @@ const Button = styled.button`
   margin-top: 30px;
 `;
 
-const ContentModal = (
-  <>
-    <h2>Felicitaciones</h2>
-    <p>
-      El pedido será enviado a nuestro whatsapp. El pago se realiza en efectivo
-      al momento de la entrega.
-    </p>
-    <input />
-    <Button>Enviar</Button>
-  </>
-);
+
+
+
 
 function SocialNetworks() {
   const {isShown, toggle} = UseModal();
@@ -61,7 +54,7 @@ function SocialNetworks() {
       <Modal
         isShown={isShown}
         hide={toggle}
-        modalContent={ContentModal}
+        modalContent={<ContentModal />}
       />
 
       {data.map((v, i) => (
