@@ -1,6 +1,7 @@
 import { UseForm } from "../../hooks/form/useForm";
 import styled from "styled-components";
 import { FormGmail } from "./../../interface/formGmail";
+import { useState } from "react";
 
 const Input = styled.input`
   border: thin solid #dedede;
@@ -32,7 +33,6 @@ const ErrorCss = styled.p`
   font-weight: "bold";
   color: "#dc3545";
 `;
-
 const initialForm = {
   name: "",
   email: "",
@@ -40,8 +40,8 @@ const initialForm = {
   comments: "",
 };
 
-const validationsForm = (form) => {
-  let errors: FormGmail = {};
+const validationsForm = (form:FormGmail) => {
+  let errors = {} as FormGmail
   //expresions regulars
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
@@ -79,6 +79,7 @@ export const ContentModal = () => {
     handleBlur,
     handleSubmit,
   } = UseForm(initialForm, validationsForm);
+
 
   return (
     <>
@@ -131,8 +132,4 @@ export const ContentModal = () => {
   );
 };
 
-/* 
 
-  
-
-*/

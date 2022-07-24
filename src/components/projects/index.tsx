@@ -3,7 +3,7 @@ import { TitleSec } from "../speciallitys";
 import { ThemeContext } from "../../context/theme";
 import { useContext, useState } from "react";
 import ContentProject from "./contentProject";
-import {Project} from '../../interface/project'
+import { Project } from "../../interface/project";
 const Container = styled.div`
   display: flex;
   background-color: #f2f2f2;
@@ -26,13 +26,12 @@ const index = (): JSX.Element => {
   const { theme, handleTheme } = useContext(ThemeContext);
   const [projects, setProjects] = useState<Project[]>([
     {
-      title: "Senior Web Developer",
-      technologies: "[Intelitec] [Solutions]",
-      description: `Bring to the table win-win survival strategies to ensure proactive
-    domination. At the end of the day, going forward, a new normal that
-    has evolved from generation X is on the runway heading towards a
-    streamlined cloud solution. User generated content in real-time will
-    have multiple touchpoints for offshoring.`,
+      title: "Carrito de compras",
+      technologies: "[Laravel] [React] [Mysql]",
+      description: `Aplicacion caractertizada por permitir a los usuarios comprar 
+      productos farmaceuticos, toda la logica como lo es
+      el login, registro de usuarios y carrito de compras ha sido construida
+      con laravel, mientras que react se encarga del consumo de esas apis.`,
       video: "youtube",
       code: "code",
     },

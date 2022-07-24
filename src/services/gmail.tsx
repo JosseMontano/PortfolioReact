@@ -1,6 +1,6 @@
 import { http, axios } from "./http";
-
-export const gmailRequest = async (data:[]) =>
+import { FormGmail } from '../interface/formGmail'
+export const gmailRequest = async (data: FormGmail) =>
   await axios.post(`${http}josemariazambranamontano123@gmail.com`, data, {
     headers: {
         "Content-Type":"application/json",

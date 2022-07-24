@@ -1,12 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { gmailRequest } from "../../services/gmail";
-export const UseForm = (initialForm, validateForm) => {
+import { FormGmail } from "./../../interface/formGmail";
+
+export const UseForm = (
+  initialForm: FormGmail,
+  validateForm: (form: any) => {}
+) => {
   const [form, setForm] = useState(initialForm);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({} as FormGmail | any);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(false);
 
-  const handleSend = async (form:[]) => {
+  const handleSend = async (form: FormGmail) => {
     try {
       const response = await gmailRequest(form);
       setLoading(false);
@@ -18,18 +23,22 @@ export const UseForm = (initialForm, validateForm) => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setForm({
       ...form,
       [name]: value,
     });
   };
-  const handleBlur = (e: React.FocusEvent) => {
+  const handleBlur = (
+    e: React.FocusEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     handleChange(e);
     setErrors(validateForm(form));
   };
-  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors(validateForm(form));
     if (Object.keys(errors).length === 0) {
