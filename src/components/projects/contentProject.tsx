@@ -20,10 +20,11 @@ const Description = styled.p``;
 const ContainerLinksProject = styled.div`
   text-align: end;
 `;
-const LinksProject = styled.span`
+const LinksProject = styled.a`
   color: #bd5d38;
   margin: 0px 10px 0px 0px;
   text-transform: uppercase;
+  text-decoration: none;
 `;
 
 interface Props {
@@ -39,8 +40,12 @@ const contentProject = ({ projects }: Props) => {
           <Short>{v.technologies}</Short>
           <Description>{v.description}</Description>
           <ContainerLinksProject>
-            <LinksProject>{v.video}</LinksProject>
-            <LinksProject>{v.code}</LinksProject>
+            <LinksProject href={v.video} target={"_blank"}>
+              youtube
+            </LinksProject>
+            <LinksProject href={v.code} target={"_blank"}>
+              code
+            </LinksProject>
           </ContainerLinksProject>
         </ContainerProject>
       ))}

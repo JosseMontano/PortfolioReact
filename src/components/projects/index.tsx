@@ -23,28 +23,28 @@ const Container = styled.div`
 `;
 
 const index = (): JSX.Element => {
-  const { theme, handleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const [projects, setProjects] = useState<Project[]>([
     {
       title: "Carrito de compras",
-      technologies: "[Laravel] [React] [Mysql]",
-      description: `Aplicacion caractertizada por permitir a los usuarios comprar 
-      productos farmaceuticos, toda la logica como lo es
-      el login, registro de usuarios y carrito de compras ha sido construida
-      con laravel, mientras que react se encarga del consumo de esas apis.`,
+      technologies: "[React] [Laravel] [Mysql]",
+      description: `Aplicacion caractertizada por permitir a los usuarios enviar 
+      al whatsapp una lista de productos farmaceuticos que se desea comprar, la logica 
+      del carrito funciona con useReducer. y los datos de los productos se obtiene de una api
+      construida con laravel.`,
       video: "youtube",
-      code: "code",
+      code: "https://github.com/JosseMontano/pharmacy-react-laravel.git",
     },
     {
-      title: "Senior Web Developer",
-      technologies: "[Intelitec] [Solutions]",
-      description: `Bring to the table win-win survival strategies to ensure proactive
-    domination. At the end of the day, going forward, a new normal that
-    has evolved from generation X is on the runway heading towards a
-    streamlined cloud solution. User generated content in real-time will
-    have multiple touchpoints for offshoring.`,
+      title: "Inmuebles en la nube",
+      technologies: "[React] [Express] [Typescript]",
+      description: `Es una red social la cual permite a las personas 
+      compartir informacion de inmuebles para que usuarios puedan alquilar o comprar. Entre 
+      sus caracteristicas mas destacables esta la traduccion de ingles a español, el funcionamiento
+      de la misma sin internet y las operaciones como añadir o eliminar funcionan en tiempo real.
+      `,
       video: "youtube",
-      code: "code",
+      code: "https://github.com/JosseMontano/estateInTheCloud.git",
     },
   ]);
   return (

@@ -1,12 +1,12 @@
-import React from "react";
 import styled from "styled-components";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
-import {Modal} from "../../hooks/modal/modal";
+import { HiOutlineDocumentText } from "react-icons/hi";
+import { Modal } from "../../hooks/modal/modal";
 import { UseModal } from "../../hooks/modal/useModal";
-import { params } from "../../interface/modal";
-import {ContentModal} from './contentModal'
+import { ContentModal } from "./contentModal";
+
 const Redirect = styled.a``;
 
 const Button = styled.button`
@@ -24,12 +24,8 @@ const Button = styled.button`
   margin-top: 30px;
 `;
 
-
-
-
-
 function SocialNetworks() {
-  const {isShown, toggle} = UseModal();
+  const { isShown, toggle } = UseModal();
   const styleIcon = {
     padding: "5px",
     fontSize: "42px",
@@ -48,23 +44,23 @@ function SocialNetworks() {
       href: "https://github.com/JosseMontano",
       component: FaGithub,
     },
+    {
+      href: "https://drive.google.com/file/d/1u_87yINNPkZQSPaNtbb7Kcb5TN-7Qjfx/view?usp=sharing",
+      component: HiOutlineDocumentText,
+    },
   ];
   return (
     <>
-      <Modal
-        isShown={isShown}
-        hide={toggle}
-        modalContent={<ContentModal />}
-      />
+      <Modal isShown={isShown} hide={toggle} modalContent={<ContentModal />} />
 
       {data.map((v, i) => (
         <Redirect key={i} target="_blank" href={v.href}>
           <v.component style={styleIcon} />
         </Redirect>
       ))}
-      <Redirect onClick={toggle}>
+      {/*       <Redirect onClick={toggle}>
         <FaWhatsapp style={styleIcon} />
-      </Redirect>
+      </Redirect> */}
     </>
   );
 }
